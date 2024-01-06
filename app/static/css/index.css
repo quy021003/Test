@@ -1,0 +1,99 @@
+.animate__animated
+    {
+    animation-iteration-count: infinite;
+    }
+
+    .changeColor
+    {
+    animation: changColorText 1s ease infinite;
+    }
+    @keyframes changeColorText
+    {
+    from {background-color: red; color: yellow;}
+    to {background-color: yellow; color: red;}
+    }
+    .head-content
+    {
+    color: gold;
+    }
+    .warning
+    {
+    background-color: red;
+    animation-name: changeColorText;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    }
+    .sold-out-content
+    {
+    position: relative;
+    }
+    .sold-out-panel
+    {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    }
+    .sold-out-text
+    {
+    padding: 5px 0;
+    text-align: center;
+    border: black sold;
+    background-color: red;
+    width: 100%;
+    }
+    .card>span
+    {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+
+    }
+
+.full-width
+{
+    width: 100%;
+}
+.no-padding
+{
+    padding: 0px;
+}
+.v-margin-top-30
+{
+    margin-top:30px;
+}
+.v-margin-bottom-30
+{
+    margin-bottom: 30px;
+}
+.heading__title {
+    color: #000;
+    margin-bottom: 5px;
+    font-size: 32px;
+    font-weight: bold;
+}
+.heading__description {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 2px;
+    font-style: italic;
+}
+.v-margin-bottom-15
+{
+    margin-bottom: 15px;
+}
+.img-cate
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}

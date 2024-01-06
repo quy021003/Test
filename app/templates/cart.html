@@ -1,0 +1,55 @@
+{% extends 'layout/base.html' %}
+{% block title %}Giỏ hàng{% endblock %}
+{%block link%}
+<link rel="stylesheet" href="/static/css/cart.css"/>
+{%endblock%}
+{% block content %}
+<h1 class="text-center text-info mt-1">GIỎ HÀNG</h1>
+
+{% if 'cart' in session %}
+
+<table class="table">
+    <tr>
+        <th>Mã Phòng</th>
+        <th>Tên Phòng</th>
+        <th>Đơn Giá</th>
+        <th>Bắt đầu</th>
+        <th>Kết thúc</th>
+        <th></th>
+    </tr>
+    {% for c in session['cart'].values() %}
+    <tr id="room{{c.id}}">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.price}}</td>
+        <td>
+            <input id="ips{{c.id}}" type="text" onblur="updateCartStart({{c.id}}, this)" value="{{c.start}}" class="ipDate form-control"/>
+        </td>
+        <td>
+            <input id="ipe{{c.id}}" type="text" onblur="updateCartEnd({{c.id}}, this)" value="{{c.end}}" class="ipDate form-control"/>
+        </td>
+        <td>
+            <button onclick="deleteCart({{c.id}})" class="btn btn-danger">&times;</button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div>
+    <h5> Số lượng: <span class="cart-counter">{{cart_stats.total_quantity}}</span> phòng</h5>
+    <h5> Tổng tiền: <span class="cart-amount">{{"{:,.0f}".format(cart_stats.total_amount)}}</span> VNĐ</h5>
+</div>
+<div class="text-end">
+    {% if current_user.is_authenticated %}
+    <input type="button" id="btn-purchase" onclick="pay()" value="Đặt phòng" class="mr-2 btn btn-danger">
+    {% else %}
+    <p>Vui lòng <a href="/login?next=/cart">Đăng nhập</a></p>
+    {% endif %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    KHÔNG có sản phẩm trong giỏ!
+</div>
+{% endif %}
+
+{% endblock %}
+
